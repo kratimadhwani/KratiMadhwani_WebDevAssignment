@@ -55,7 +55,7 @@ A responsive and animated landing page for Scoreazy's Confidence Building Microc
    ```bash
    python -m http.server 8000
    ```
-   Then visit `http://localhost:8000`
+   Then visit [`http://localhost:8000`](https://krati-madhwani-web-dev-assignment-4.vercel.app/)
 
 ## Browser Support
 
@@ -96,5 +96,6 @@ The website is built with Tailwind CSS, making it easy to customize:
 - Styling can be modified using Tailwind utility classes
 
 ## License
+
 
 © Scoreazy Edutech Private Limited | All rights reserved 
