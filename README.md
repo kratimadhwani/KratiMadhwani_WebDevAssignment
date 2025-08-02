@@ -2,6 +2,12 @@
 
 A responsive and animated landing page for Scoreazy's Confidence Building Microcourse, built with Tailwind CSS and GSAP animations.
 
+## Getting Started
+
+1. Clone or download the project files
+2. Open `index.html` in a web browser
+   Deployed Link: [`http://localhost:8000`](https://krati-madhwani-web-dev-assignment-4.vercel.app/)
+
 ## Features
 
 ### 🎨 Design
@@ -47,16 +53,6 @@ A responsive and animated landing page for Scoreazy's Confidence Building Microc
 - **JavaScript**: Interactive functionality
 - **Google Fonts**: Poppins font family
 
-## Getting Started
-
-1. Clone or download the project files
-2. Open `index.html` in a web browser
-3. For development, use a local server:
-   ```bash
-   python -m http.server 8000
-   ```
-   Then visit [`http://localhost:8000`](https://krati-madhwani-web-dev-assignment-4.vercel.app/)
-
 ## Browser Support
 
 - Chrome (latest)
@@ -99,3 +95,4 @@ The website is built with Tailwind CSS, making it easy to customize:
 
 
 © Scoreazy Edutech Private Limited | All rights reserved 
+
