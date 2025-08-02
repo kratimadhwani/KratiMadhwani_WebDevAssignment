@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Confidence Building Microcourse for Grades 3-5 by Scoreazy" />
+    <title>Microcourse | Scoreazy</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'scoreazy': {
+                            'green': '#00BFA6',
+                            'dark': '#1F2937',
+                            'light': '#F3F4F6'
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in-left': 'fadeInLeft 0.8s ease-out',
+                        'fade-in-right': 'fadeInRight 0.8s ease-out',
+                        'bounce-in': 'bounceIn 0.8s ease-out',
+                        'slide-in': 'slideIn 0.6s ease-out',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            from {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Ensure testimonials are visible */
+        .testimonial-card {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+
+        /* Make background bubbles very transparent */
+        .floating {
+            opacity: 0.22 !important;
+        }
+    </style>
+</head>
+
+<body class="font-poppins bg-white text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="text-2xl font-bold">
+                        <span class="text-black">scor</span><span class="text-scoreazy-green">eazy</span>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-scoreazy-green transition-colors">Home</a>
+                    <a href="#enroll" class="text-gray-600 hover:text-scoreazy-green transition-colors">Enroll</a>
+                    <a href="#contact" class="text-gray-600 hover:text-scoreazy-green transition-colors">Contact</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="https://www.linkedin.com/company/scoreazy/posts/?feedView=all" target="_blank"
+                        rel="noopener noreferrer">
+                        <button
+                            class="hidden md:block bg-text-scoreazy-green hover:text-scoreazy-green text-black px-6 py-2 rounded-lg border border-black transition-all duration-300 transform hover:scale-105">
+                            Follow Us
+                        </button>
+                    </a>
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden mobile-menu-button p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div class="md:hidden mobile-menu hidden border-t border-gray-200">
+                <nav class="py-4 space-y-4">
+                    <a href="#home"
+                        class="block text-gray-600 hover:text-scoreazy-green transition-colors py-2">Home</a>
+                    <a href="#enroll"
+                        class="block text-gray-600 hover:text-scoreazy-green transition-colors py-2">Enroll</a>
+                    <a href="#contact"
+                        class="block text-gray-600 hover:text-scoreazy-green transition-colors py-2">Contact</a>
+                    <a href="https://www.linkedin.com/company/scoreazy/posts/?feedView=all" target="_blank"
+                        rel="noopener noreferrer">
+                        <button
+                            class="w-full bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-2 rounded-lg border border-black transition-all duration-300 transform hover:scale-105">
+                            Follow Us
+                        </button>
+                    </a>
+                </nav>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-10 w-32 h-32 bg-scoreazy-green opacity-2 rounded-full floating"></div>
+            <div class="absolute bottom-20 right-10 w-24 h-24 bg-yellow-400 opacity-2 rounded-full floating"
+                style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-pink-400 opacity-2 rounded-full floating"
+                style="animation-delay: 4s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8 animate-fade-in-left">
+                    <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
+                        Transform Education with
+                        <span class="text-scoreazy-green">technology & data</span>
+                    </h1>
+                    <p class="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed">
+                        At scoreazy, we are on a mission to transform education by unlocking the full potential of every
+                        student. Our journey began with a simple yet powerful idea: to harness the power of technology
+                        and data to revolutionize the way students learn and teachers teach.
+                    </p>
+
+                    <!-- Feature Highlights -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 pt-8">
+                        <div
+                            class="flex flex-col items-center space-y-3 p-4 rounded-lg bg-white/50 backdrop-blur-sm card-hover">
+                            <div class="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-medium text-gray-700 text-center">Innovative Technology</span>
+                        </div>
+                        <div
+                            class="flex flex-col items-center space-y-3 p-4 rounded-lg bg-white/50 backdrop-blur-sm card-hover">
+                            <div class="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-medium text-gray-700 text-center">Seamless Learning</span>
+                        </div>
+                        <div
+                            class="flex flex-col items-center space-y-3 p-4 rounded-lg bg-white/50 backdrop-blur-sm card-hover">
+                            <div class="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-medium text-gray-700 text-center">Empowering Teachers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Illustration -->
+                <div class="relative animate-fade-in-right">
+                    <div class="relative z-10">
+                        <!-- Kids Studying Image Container -->
+                        <div class="bg-white rounded-lg shadow-2xl p-6 border border-gray-200 overflow-hidden">
+                            <div class="flex items-center space-x-2 mb-4">
+                                <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                            </div>
+                            <div class="relative">
+                                <img src="assets/kids_studying.jpg" alt="Kids studying together"
+                                    class="w-full h-auto rounded-lg object-cover">
+                            </div>
+                        </div>
+
+                        <!-- Character Avatars -->
+                        <div
+                            class="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                            <div class="w-8 h-8 bg-blue-500 rounded-full"></div>
+                        </div>
+                        <div
+                            class="absolute -top-4 -left-4 w-16 h-16 bg-pink-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                            <div class="w-8 h-8 bg-green-500 rounded-full"></div>
+                        </div>
+                        <div
+                            class="absolute -bottom-4 -right-4 w-16 h-16 bg-red-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                            <div class="w-8 h-8 bg-yellow-500 rounded-full"></div>
+                        </div>
+                        <div
+                            class="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                            <div class="w-8 h-8 bg-pink-500 rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <!-- Background Shapes -->
+                    <div class="absolute -top-10 -left-10 w-32 h-32 bg-blue-600 rounded-full opacity-5 floating"></div>
+                    <div class="absolute -bottom-8 -right-8 w-24 h-24 bg-yellow-400 rounded-lg opacity-5 floating"
+                        style="animation-delay: 1s;"></div>
+                    <div class="absolute top-1/2 -right-4 w-16 h-16 bg-pink-400 rounded-lg opacity-5 floating"
+                        style="animation-delay: 2s;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Confidence Building Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Build Confidence in Your Child</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">A 5-day microcourse for Grades 3–5 to boost
+                    self-esteem and performance</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="text-4xl mb-4">💡</div>
+                    <h3 class="text-lg font-semibold mb-2">Fun Video Lessons</h3>
+                    <p class="text-gray-600 text-sm">Engaging content that makes learning enjoyable</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-lg font-semibold mb-2">Confidence Challenges</h3>
+                    <p class="text-gray-600 text-sm">Practical exercises to build self-esteem</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="text-4xl mb-4">🤝</div>
+                    <h3 class="text-lg font-semibold mb-2">Parent Engagement</h3>
+                    <p class="text-gray-600 text-sm">Involve parents in the learning journey</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="text-4xl mb-4">🏅</div>
+                    <h3 class="text-lg font-semibold mb-2">Certificate Included</h3>
+                    <p class="text-gray-600 text-sm">Recognition for completing the course</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#enroll"
+                    class="inline-block bg-scoreazy-green hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg cta-button">
+                    Enroll Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">What's Inside?</h2>
+            <div class="space-y-6">
+                <div class="flex items-center space-x-4 p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-scoreazy-green rounded-full flex items-center justify-center text-white font-bold">
+                        1</div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Day 1: Self-Awareness Activities</h3>
+                        <p class="text-gray-600">Understanding strengths and areas for growth</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-scoreazy-green rounded-full flex items-center justify-center text-white font-bold">
+                        2</div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Day 2: Growth Mindset Games</h3>
+                        <p class="text-gray-600">Learning to embrace challenges and mistakes</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-scoreazy-green rounded-full flex items-center justify-center text-white font-bold">
+                        3</div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Day 3: Communication Boosters</h3>
+                        <p class="text-gray-600">Building effective communication skills</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-scoreazy-green rounded-full flex items-center justify-center text-white font-bold">
+                        4</div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Day 4: Story-Based Role Play</h3>
+                        <p class="text-gray-600">Practicing confidence through storytelling</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-scoreazy-green rounded-full flex items-center justify-center text-white font-bold">
+                        5</div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Day 5: Show Your Confidence Challenge</h3>
+                        <p class="text-gray-600">Demonstrating newfound confidence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">What Parents Say</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-2xl">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"My daughter loved the stories and games! The confidence boost
+                        was noticeable within just a few days. She's now more willing to participate in class
+                        discussions."</p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-10 h-10 bg-scoreazy-green rounded-full flex items-center justify-center text-white font-semibold">
+                            P</div>
+                        <div class="ml-3">
+                            <p class="font-semibold">Priya Sharma</p>
+                            <p class="text-gray-500 text-sm">Mumbai, Grade 4 Parent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-2xl">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"Noticeable change in confidence in 5 days! The course
+                        structure is perfect for busy families. My son now speaks up more confidently."</p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-10 h-10 bg-scoreazy-green rounded-full flex items-center justify-center text-white font-semibold">
+                            A</div>
+                        <div class="ml-3">
+                            <p class="font-semibold">Ankit Patel</p>
+                            <p class="text-gray-500 text-sm">Pune, Grade 3 Parent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-2xl">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"The interactive activities really helped my child overcome
+                        stage fright. She's now excited to present in front of her class!"</p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-10 h-10 bg-scoreazy-green rounded-full flex items-center justify-center text-white font-semibold">
+                            S</div>
+                        <div class="ml-3">
+                            <p class="font-semibold">Sunita Reddy</p>
+                            <p class="text-gray-500 text-sm">Bangalore, Grade 5 Parent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-2xl">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"Amazing transformation! My shy daughter is now making new
+                        friends and participating in school activities. Highly recommended!"</p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-10 h-10 bg-scoreazy-green rounded-full flex items-center justify-center text-white font-semibold">
+                            R</div>
+                        <div class="ml-3">
+                            <p class="font-semibold">Rajesh Kumar</p>
+                            <p class="text-gray-500 text-sm">Delhi, Grade 4 Parent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-2xl">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"The daily challenges were perfect for building confidence
+                        gradually. My son now believes in himself more than ever before."</p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-10 h-10 bg-scoreazy-green rounded-full flex items-center justify-center text-white font-semibold">
+                            M</div>
+                        <div class="ml-3">
+                            <p class="font-semibold">Meera Singh</p>
+                            <p class="text-gray-500 text-sm">Chennai, Grade 3 Parent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-2xl">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"Simple yet effective approach. The 5-day format worked
+                        perfectly for our busy schedule. Great results!"</p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-10 h-10 bg-scoreazy-green rounded-full flex items-center justify-center text-white font-semibold">
+                            V</div>
+                        <div class="ml-3">
+                            <p class="font-semibold">Vikram Malhotra</p>
+                            <p class="text-gray-500 text-sm">Hyderabad, Grade 5 Parent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button
+                        class="faq-toggle w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900">Who is this course for?</h3>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 py-4 bg-white">
+                        <p class="text-gray-600">Kids in Grades 3–5 who need a confidence boost. The course is designed
+                            to be engaging and age-appropriate.</p>
+                    </div>
+                </div>
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button
+                        class="faq-toggle w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900">Is parental involvement required?</h3>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 py-4 bg-white">
+                        <p class="text-gray-600">Yes, minimal daily support helps greatly! We provide guidance for
+                            parents to support their child's learning journey.</p>
+                    </div>
+                </div>
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button
+                        class="faq-toggle w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900">Will my child get a certificate?</h3>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 py-4 bg-white">
+                        <p class="text-gray-600">Absolutely! A digital certificate will be provided upon completion of
+                            the course.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section id="enroll" class="py-20 bg-gradient-to-r from-scoreazy-green to-green-600">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">Ready to Empower Your Child?</h2>
+            <p class="text-xl text-green-100 mb-8">Join thousands of parents who have transformed their child's
+                confidence</p>
+            <a href="#"
+                class="inline-block bg-white text-scoreazy-green font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cta-button">
+                Join the Microcourse Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-2xl font-bold mb-4">
+                    <span class="text-white">score</span><span class="text-scoreazy-green">azy</span>
+                </div>
+                <p class="text-gray-400 mb-4">SCORING MADE EASY</p>
+                <p class="text-gray-500">© Scoreazy Edutech Private Limited | All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
